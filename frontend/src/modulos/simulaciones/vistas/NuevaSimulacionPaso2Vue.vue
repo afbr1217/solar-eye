@@ -399,7 +399,7 @@ onMounted(() => {
         draw: {
             polygon: {
                 allowIntersection: false,
-                showArea: true,
+                showArea: false,
                 shapeOptions: {
                     color: '#1e3a8a',
                     fillOpacity: 0.3
