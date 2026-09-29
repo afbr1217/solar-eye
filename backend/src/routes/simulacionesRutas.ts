@@ -250,10 +250,12 @@ router.post('/pvlib', async (req: Request, res: Response) => {
     try {
         const payload = {
             ...req.body,
-            ciudad: req.body.ciudad || 'culiacan'
+            ciudad: 'culiacan',
+            lat: 24.8091,
+            lon: -107.3940
         };
         const resp = await axios.post(`${SIMULADOR_PYTHON}/simular`, payload, {
-            timeout: 120000 // 2 minutos por si NASA tarda
+            timeout: 120000
         });
         res.status(200).send(resp.data.resultado);
     } catch (err: any) {
