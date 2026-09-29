@@ -254,7 +254,8 @@ router.post('/pvlib', async (req: Request, res: Response) => {
         res.status(200).send(resp.data.resultado);
     } catch (err: any) {
         console.error('Error microservicio pvlib:', err.message);
-        res.status(500).json({ mensaje: 'Error en el motor de simulación' });
+        console.log('DETALLE ERROR SIMULADOR:', err.response?.data || err.message);
+        res.status(500).json({ mensaje: 'Error en el motor de simulación', detalle: err.response?.data || err.message });
     }
 });
 
