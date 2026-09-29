@@ -927,15 +927,37 @@ const onThemeChanged = async () => {
 
 const imprimirReporte = () => window.print();
 
-const descargarPDF = () => {
-    console.log(">>> RESULTADOS EN VUE:", resultados.value);
-    const idReal = (resultados.value as any)?.simulacion_id 
-                || (resultados.value as any)?.id 
-                || (resultados.value as any)?.resultados?.simulacion_id
-                || simulacion_id;
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
-    console.log(">>> ID USADO PARA PDF:", idReal);
-    window.open(`https://solar-eye-backend.onrender.com/api/pdf/${idReal}`, '_blank');
+const descargarPDF = async () => {
+  const elemento = document.querySelector('.contenedor') as HTMLElement;
+  if (!elemento) {
+    alert('No se encontró el contenido para el reporte');
+    return;
+  }
+
+  try {
+    const canvas = await html2canvas(elemento, {
+      scale: 2,
+      useCORS: true,
+      logging: false,
+      backgroundColor: '#0f172a' // O el fondo oscuro de tu app
+    });
+
+    const dataImg = canvas.toDataURL('image/png');
+    const pdf = new jsPDF('p', 'mm', 'a4');
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+    pdf.addImage(dataImg, 'PNG', 0, 0, pdfWidth, pdfHeight);
+
+    const nombreCliente = route.query.nombre ? String(route.query.nombre).replace(/\s+/g, '_') : 'Cliente';
+    pdf.save(`Reporte_Solar_${nombreCliente}.pdf`);
+  } catch (error) {
+    console.error('Error generando PDF en frontend:', error);
+    alert('Hubo un problema al generar el PDF.');
+  }
 };
 
 /*const descargarPDF = async () => {
