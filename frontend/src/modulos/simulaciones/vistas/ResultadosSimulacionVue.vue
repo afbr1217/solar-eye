@@ -927,9 +927,6 @@ const onThemeChanged = async () => {
 
 const imprimirReporte = () => window.print();
 
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
-
 const descargarPDF = async () => {
   const elemento = document.querySelector('.contenedor') as HTMLElement;
   if (!elemento) {
