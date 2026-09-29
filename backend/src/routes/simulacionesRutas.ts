@@ -248,7 +248,11 @@ const SIMULADOR_PYTHON = process.env.SIMULADOR_PYTHON || 'http://localhost:8000'
 
 router.post('/pvlib', async (req: Request, res: Response) => {
     try {
-        const resp = await axios.post(`${SIMULADOR_PYTHON}/simular`, req.body, {
+        const payload = {
+            ...req.body,
+            ciudad: req.body.ciudad || 'culiacan'
+        };
+        const resp = await axios.post(`${SIMULADOR_PYTHON}/simular`, payload, {
             timeout: 120000 // 2 minutos por si NASA tarda
         });
         res.status(200).send(resp.data.resultado);
