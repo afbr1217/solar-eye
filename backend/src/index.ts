@@ -14,17 +14,29 @@ import catalogoRutas from './routes/catalogoRutas.js';
 import pdfRutas from './routes/pdfRutas.js';
 
 const app = express();
-app.use(cors());
+
+// Configuración explícita de CORS
+app.use(cors({
+  origin: [
+    'https://solar-eye-taupe.vercel.app',
+    'http://localhost:5173',
+    'http://localhost:3000'
+  ],
+  credentials: true
+}));
 
 // --- AJUSTE CRÍTICO PARA SOLAREYE ---
 // Aumentamos el límite a 10MB para soportar las fotos de los recibos
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
+// Ruta raíz para Keep-Alive (Cron-Job)
+app.get('/', (req, res) => {
+  res.status(200).json({ status: 'ok', mensaje: 'Solar Eye Backend Activo' });
+});
+
 // Rutas de la IA (Chat y Visión)
 app.use('/api/ia', IaRutas);
-
-const PUERTO = 3001;
 
 // Resto de tus rutas
 app.use('/api/usuarios', usuariosRutas);
@@ -37,6 +49,8 @@ app.use('/api/citas', citasRutas);
 app.use('/api/inventario', inventarioRutas);
 app.use('/api/catalogo', catalogoRutas);
 app.use('/api/pdf', pdfRutas);
+
+const PUERTO = process.env.PORT || 3001;
 
 app.listen(PUERTO, () => {
     console.log(`Servidor en ejecución en el puerto ${PUERTO}`);
