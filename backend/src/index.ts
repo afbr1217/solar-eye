@@ -31,7 +31,7 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
 // Ruta raíz para Keep-Alive (Cron-Job)
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
   res.status(200).json({ status: 'ok', mensaje: 'Solar Eye Backend Activo' });
 });
 
