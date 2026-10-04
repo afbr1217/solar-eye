@@ -840,7 +840,7 @@ html.theme-dark .contenedor .kpi-icono {
 
 html.theme-dark .contenedor .movimiento-item {
 	background: #111c2e !important;
-	border: 1px solid #26354b !important;
+	border: 1px solid rgba(255, 255, 255, 0.05) !important;
 	box-shadow: none !important;
 }
 
@@ -889,7 +889,7 @@ html.theme-dark .tab-btn:hover {
 html.theme-dark .tab-btn.activo {
 	background: transparent !important;
 	color: #bfdbfe !important;
-	border-bottom-color: #60a5fa !important;
+	border-bottom-color: transparent !important;
 }
 
 html.theme-dark .vacio {
@@ -903,7 +903,7 @@ html.theme-dark .tabla-wrap {
 
 html.theme-dark .tabla td {
 	color: #dbe5f2 !important;
-	border-bottom-color: #26354b !important;
+	border-bottom-color: transparent !important;
 }
 
 html.theme-dark .tabla tr:hover td {
@@ -922,7 +922,7 @@ html.theme-dark .badge-potencia {
 html.theme-dark .card-form {
 	background: #0f172a !important;
 	color: #e2e8f0 !important;
-	border: 1px solid #26354b !important;
+	border: 1px solid rgba(255, 255, 255, 0.05) !important;
 	box-shadow: none !important;
 }
 
@@ -1069,13 +1069,13 @@ html.theme-dark .pr-valor {
 
 html.theme-dark .componente-card {
 	background: #111c2e !important;
-	border-color: #2b3b52 !important;
+	border-color: transparent !important;
 }
 
 html.theme-dark .componente-card:hover,
 html.theme-dark .componente-card.seleccionado {
 	background: #172a45 !important;
-	border-color: #60a5fa !important;
+	border-color: transparent !important;
 }
 
 html.theme-dark .componente-bloque {
@@ -1109,7 +1109,7 @@ html.theme-dark .filtro-fabricante button.activo,
 html.theme-dark .filtro-opcion.activo {
 	background: #1d4f91 !important;
 	color: #ffffff !important;
-	border-color: #3b82f6 !important;
+	border-color: transparent !important;
 }
 
 html.theme-dark .filtro-opcion {
@@ -1156,12 +1156,3 @@ html.theme-dark .fila-ahorro-25 .valor-ahorro-25 {
 	color: #67e8f9 !important;
 }
 
-/* Quitar bordes y azulados en contenedores principales */
-html.theme-dark body,
-html.theme-dark .app-main,
-html.theme-dark .clientes-container,
-html.theme-dark .dashboard-container,
-html.theme-dark .contenedor {
-  border: none !important;
-  outline: none !important;
-}
