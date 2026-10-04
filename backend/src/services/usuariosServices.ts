@@ -36,8 +36,9 @@ export const agregarUsuario = async (nuevo: UsuarioNuevo) => {
              nuevo.telefono, nuevo.rol, nuevo.activo]
         );
         return results;
-    } catch (err) {
-        return { error: 'No se pudo agregar el usuario' };
+    } catch (err: any) {
+        console.error("Error MySQL Aiven:", err);
+        return { error: err.sqlMessage || err.message || "Error en la base de datos" };
     }
 };
 

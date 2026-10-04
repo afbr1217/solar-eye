@@ -131,8 +131,9 @@ router.post('/', async (req: Request, res: Response) => {
         }
 
         res.status(201).send(nuevo);
-    } catch (err) {
-        res.status(500).json({ mensaje: 'No se pudo agregar el usuario' });
+    } catch (err: any) {
+        console.error("ERROR DETALLADO MYSQL:", err);
+        res.status(500).json({ mensaje: 'No se pudo agregar el usuario', detalle: err?.message || err });
     }
 });
 

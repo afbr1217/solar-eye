@@ -4,10 +4,10 @@ services:
     container_name: solareye_mysql
     restart: always
     environment:
-        MYSQL_ROOT_PASSWORD: 123456
-        MYSQL_DATABASE: solar_eye
-        MYSQL_USER: solar
-        MYSQL_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: solar_eye
+      MYSQL_USER: solar
+      MYSQL_PASSWORD: 123456
     ports:
       - "3306:3306"
     volumes:
@@ -24,18 +24,21 @@ services:
       DATABASE_HOST: solareye-db-solar-eye-bd.g.aivencloud.com
       DATABASE_PORT: 16897
       DATABASE_USER: avnadmin
-      DATABASE_PASSWORD: ap5QahJs1Qlvndiz915
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       DATABASE_NAME: defaultdb
       DATABASE_SSL: "true"
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
       SIMULADOR_PYTHON: http://simulator:8000
       OPEN_METEO_API_KEY: ${OPEN_METEO_API_KEY:-}
     ports:
       - "3001:3001"
+
   simulator:
     build: "./solar-eye-simulator"
     container_name: solareye_simulator
     ports:
       - "8000:8000"
+
   frontend:
     build: "./frontend"
     container_name: solareye_frontend
@@ -43,5 +46,6 @@ services:
       - backend
     ports:
       - "8080:80"
+
 volumes:
   mysql_data:
