@@ -1101,7 +1101,8 @@ const onThemeChanged = async () => {
 const imprimirReporte = () => window.print();
 
 const descargarPDF = () => {
-    window.open(`http://localhost:3001/api/pdf/${simulacion_id}`, '_blank');
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://solar-eye-backend.onrender.com';
+  window.open(`${apiUrl}/api/pdf/${simulacion_id}`, '_blank');
 };
 
 /*const descargarPDF = async () => {
