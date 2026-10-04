@@ -148,7 +148,7 @@ const enviar = async (mensaje?: string, etiqueta?: string) => {
   await bajarScroll();
  
   try {
-    const res = await axios.post('http://localhost:3001/api/ia/chat', {
+    const res = await axios.post('import.meta.env.VITE_API_URL || "https://solar-eye-backend.onrender.com"/api/ia/chat', {
       mensaje: texto
     });
     historial.value.push({ role: 'ia', content: res.data.respuesta });

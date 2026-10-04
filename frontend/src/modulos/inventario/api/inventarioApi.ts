@@ -1,4 +1,4 @@
 import axios from 'axios';
 
-const inventarioApi = axios.create({ baseURL: 'http://localhost:3001/api/inventario' });
+const inventarioApi = axios.create({ baseURL: 'import.meta.env.VITE_API_URL || "https://solar-eye-backend.onrender.com"/api/inventario' });
 export default inventarioApi;
