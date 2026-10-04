@@ -21,10 +21,12 @@ services:
       - mysql
       - simulator
     environment:
-      DATABASE_HOST: mysql
-      DATABASE_USER: solar
-      DATABASE_PASSWORD: 123456
-      DATABASE_NAME: solar_eye
+      DATABASE_HOST: solareye-db-solar-eye-bd.g.aivencloud.com
+      DATABASE_PORT: 16897
+      DATABASE_USER: avnadmin
+      DATABASE_PASSWORD: ap5QahJs1Qlvndiz915
+      DATABASE_NAME: defaultdb
+      DATABASE_SSL: "true"
       SIMULADOR_PYTHON: http://simulator:8000
       OPEN_METEO_API_KEY: ${OPEN_METEO_API_KEY:-}
     ports:
