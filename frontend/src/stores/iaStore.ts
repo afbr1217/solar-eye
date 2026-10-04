@@ -2,8 +2,10 @@ import axios from 'axios';
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
+const API_URL = import.meta.env.VITE_API_URL || 'https://solar-eye-backend.onrender.com';
+
 const iaApi = axios.create({
-    baseURL: 'http://localhost:3001/api/ia'
+  baseURL: `${API_URL}/api/ia`
 });
 
 export const useIaStore = defineStore('ia', () => {
