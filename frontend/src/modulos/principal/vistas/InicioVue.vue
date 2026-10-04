@@ -480,7 +480,8 @@
   import { ref, onMounted } from 'vue';
   import axios from 'axios';
 
-  const empresasApi = axios.create({ baseURL: 'http://localhost:3001/api/empresas' });
+  const API_URL = import.meta.env.VITE_API_URL || 'https://solar-eye-backend.onrender.com';
+  const empresasApi = axios.create({ baseURL: `${API_URL}/api/empresas` });
 
   const empresas = ref<any[]>([]);
   const modalEmpresa = ref(false);

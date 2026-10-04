@@ -1,5 +1,9 @@
 import axios from 'axios';
 
-const adminApi = axios.create({ baseURL: 'http://localhost:3001/api/usuarios' });
+const API_URL = import.meta.env.VITE_API_URL || 'https://solar-eye-backend.onrender.com';
+
+const adminApi = axios.create({
+  baseURL: `${API_URL}/api/usuarios`
+});
 
 export default adminApi;
