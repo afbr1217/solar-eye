@@ -1155,3 +1155,13 @@ html.theme-dark .fila-ahorro-25 > span:first-child {
 html.theme-dark .fila-ahorro-25 .valor-ahorro-25 {
 	color: #67e8f9 !important;
 }
+/* Eliminar bordes azul claro globales y enfocar en móviles */
+*, *::before, *::after {
+  outline: none !important;
+}
+
+/* Quitar líneas del contenedor principal si provienen de bordes superiores/inferiores */
+.app-container, header, nav, footer, div, section {
+  border-top-color: transparent !important;
+  border-bottom-color: transparent !important;
+}
