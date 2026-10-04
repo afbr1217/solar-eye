@@ -1044,7 +1044,6 @@ ${(() => {
 
     const browser = await puppeteer.launch({
         args: chromium.args,
-        defaultViewport: chromium.defaultViewport as any,
         executablePath: await chromium.executablePath(),
         headless: true,
     });
